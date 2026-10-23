@@ -157,3 +157,4 @@ footer{background:#e9ebe6;border-top:1px solid var(--line);padding:36px 0 18px;c
 @media(min-width:1021px){#precios .wrap>div:not(.sh){}#precios .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}#precios .sh{grid-column:1/-1}.pcat{margin:0}}
 @media(max-width:600px){.pcat{padding:4px 14px 6px}.plist i{display:none}.plist li{justify-content:space-between}}
 .pp{flex:none}
+.soc.fb:before{background:#1877f2}.soc.li:before{background:#0a66c2}.soc.fb:hover,.soc.li:hover{color:#fff}
