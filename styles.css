@@ -135,3 +135,9 @@ footer{background:#e9ebe6;border-top:1px solid var(--line);padding:36px 0 18px;c
 .drow .dimg{aspect-ratio:1;border-radius:12px}.drow .dtx h2{font-size:1.35rem;margin:2px 0 4px}.drow .lead{font-size:.82rem;line-height:1.45}.drow .chk{margin:8px 0 10px;gap:3px}.drow .chk li{font-size:.8rem}.drow .chk li:before{width:14px;height:14px;background-size:9px}.drow .num{font-size:.8rem}
 @media(max-width:1020px){.det{grid-template-columns:1fr}.drow{grid-template-columns:96px 1fr}}
 @media(min-width:1021px){.dsec{padding:34px 0}.drow{grid-template-columns:1fr;padding:12px 12px 16px}.drow .dimg{aspect-ratio:16/9}.drow .dtx{padding:0 6px}}
+/* detalle servicios compacto v3 */
+.dsec{padding:22px 0}.det{gap:10px}.drow,.drow.flip{grid-template-columns:64px 1fr!important;gap:12px;padding:12px!important;border-radius:14px;align-items:start}
+.drow .dimg{aspect-ratio:1!important;border-radius:10px}.drow .dtx{padding:0!important}.drow .num{font-size:.7rem}.drow .dtx h2{font-size:1.05rem;margin:0 0 3px}
+.drow .lead{font-size:.76rem;line-height:1.4;margin:0}.drow .chk{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 8px}.drow .chk li{font-size:.68rem;padding:2px 8px;border-radius:99px;background:var(--bg);gap:0}.drow .chk li:before{display:none}
+.drow .btn.sm{font-size:.74rem;padding:3px 3px 3px 12px;gap:8px}.drow .btn.sm .ba{width:22px;height:22px}.drow .btn.sm .ba svg{width:13px}
+@media(max-width:600px){.drow .chk{display:none}.drow .lead{margin-bottom:8px}.drow,.drow.flip{grid-template-columns:52px 1fr!important}}
