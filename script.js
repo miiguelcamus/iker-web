@@ -16,16 +16,26 @@ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es
 $$('.scard,.steps li,blockquote,details,.calc,.g,.soc,.cc').forEach(function(el,i){el.classList.add('reveal');el.style.transitionDelay=(i%3)*80+'ms';io.observe(el)});$$('[data-count]').forEach(function(el){io.observe(el)})}
 var pr=$('.prog');if(pr){var pp=function(){var r=pr.parentNode.getBoundingClientRect();pr.style.setProperty('--pp',Math.min(Math.max((innerHeight*.85-r.top)/(r.height+innerHeight*.3),0),1))};addEventListener('scroll',pp,{passive:true});pp()}
 // plan semanal
-var pl=$('#pl');if(pl){var R=$('#dr'),goal=$('#go .opt.on'),hr=$('#hh .opt.on');
+var PLAN='';var pl=$('#pl');if(pl){var R=$('#dr'),hr=$('#hh .opt.on'),qg=new URLSearchParams(location.search).get('g'),goal=$('#go .opt[data-g="'+qg+'"]')||$('#go .opt.on');
+$$('#go .opt').forEach(function(x){x.classList.toggle('on',x===goal)});
 var S={fuerza:['Fuerza tren inferior','Fuerza tren superior','Fuerza global','Potencia y core','Fuerza + movilidad'],peso:['Circuito metabólico','Fuerza global','Cardio por intervalos','Fuerza + core','Circuito HIIT'],
 lesion:['Valoración y movilidad','Fuerza progresiva','Estabilidad y control','Fuerza progresiva','Readaptación'],salud:['Fuerza y postura','Cardio suave + core','Movilidad y fuerza','Fuerza global','Movilidad']};
 var DAYS=['LUN','MAR','MIÉ','JUE','VIE','SÁB'],PICK={1:[2],2:[1,3],3:[0,2,4],4:[0,1,3,4],5:[0,1,2,3,4]};
 function upd(){var n=+R.value,w=$('#wk');w.innerHTML='';var sat=hr.dataset.h.indexOf('Sábado')===0,pick=PICK[n].slice();if(sat){pick=pick.slice(0,n-1).concat([5])}
-var k=0;DAYS.forEach(function(dn,i){var on=pick.indexOf(i)>=0,el=document.createElement('div');el.className='day'+(on?' act new':'');el.innerHTML='<small>'+dn+'</small>'+(on?'<b>'+S[goal.dataset.g][k++]+'</b><i>'+(i===5?'9:00–12:00':sat?'Horario flexible':hr.textContent)+'</i>':'<i>Descanso</i>');w.appendChild(el)});
+var k=0,ses=[];DAYS.forEach(function(dn,i){var on=pick.indexOf(i)>=0,el=document.createElement('div');el.className='day'+(on?' act new':'');var st=on?S[goal.dataset.g][k++]:'';if(on)ses.push(dn.charAt(0)+dn.slice(1).toLowerCase()+': '+st);
+el.innerHTML='<small>'+dn+'</small>'+(on?'<b>'+st+'</b><i>'+(i===5?'9:00–12:00':sat?'Horario flexible':hr.textContent)+'</i>':'<i>Descanso</i>');w.appendChild(el)});
 $('#dv').textContent=n+(n>1?' días':' día');R.style.setProperty('--p',((n-1)/4*100)+'%');
-$('#plgo').href='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola Iker! He visto tu web. Me gustaría empezar a entrenar contigo. Objetivo: '+goal.textContent.toLowerCase()+'. Puedo '+n+(n>1?' días':' día')+' a la semana, horario: '+hr.dataset.h.toLowerCase()+'.')}
+PLAN='Objetivo: '+goal.textContent+'\nDías por semana: '+n+'\nHorario: '+hr.dataset.h+'\nSemana tipo: '+ses.join(', ')}
 $$('#go .opt').forEach(function(o){o.addEventListener('click',function(){$$('#go .opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on');goal=o;upd()})});
 $$('#hh .opt').forEach(function(o){o.addEventListener('click',function(){$$('#hh .opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on');hr=o;upd()})});R.addEventListener('input',upd);upd()}
+// formulario
+var cf=$('#cf');if(cf){$$('#nv .opt').forEach(function(o){o.addEventListener('click',function(){$$('#nv .opt').forEach(function(x){x.classList.remove('on')});o.classList.add('on')})});
+$$('#ex .opt').forEach(function(o){o.addEventListener('click',function(){o.classList.toggle('on')})});
+cf.addEventListener('submit',function(e){e.preventDefault();var v=function(n){return cf.querySelector('[name='+n+']').value.trim()},ok=true;
+['n','t'].forEach(function(n){var f=cf.querySelector('[name='+n+']').parentNode,bad=!v(n);f.classList.toggle('err',bad);if(bad)ok=false});if(!ok){cf.querySelector('.err input').focus();return}
+var ex=$$('#ex .opt.on').map(function(x){return x.textContent});
+var msg='Hola! He hecho mi plan en la web de Fit365.\n\nNombre: '+v('n')+'\nTeléfono: '+v('t')+(v('e')?'\nEdad: '+v('e'):'')+'\nNivel: '+$('#nv .opt.on').textContent+(v('l')?'\nLesiones o molestias: '+v('l'):'')+'\n\n'+PLAN+(ex.length?'\nMe interesa también: '+ex.join(', '):'')+(v('m')?'\n\n'+v('m'):'');
+window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener')})}
 // lightbox
 var lb=$('.lb');if(lb){var im=$('img',lb);$$('.g').forEach(function(x){x.addEventListener('click',function(){im.src=x.dataset.src;lb.hidden=false})});lb.addEventListener('click',function(){lb.hidden=true});addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true})}
 })();
