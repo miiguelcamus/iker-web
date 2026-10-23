@@ -120,3 +120,4 @@ footer{background:#e9ebe6;border-top:1px solid var(--line);padding:36px 0 18px;c
 @media(max-width:600px){.days{grid-template-columns:repeat(3,1fr)}}
 .cstep.bad .cl{color:#e5482a}.cstep.bad .days .opt{border-color:#e5482a}.fl.err input{border-color:#e5482a}
 #dc{font:500 .72rem Inter,sans-serif;letter-spacing:.06em;color:var(--mut)}
+.mcol{display:grid;gap:12px;min-width:0}.addr{display:flex;align-items:center;gap:12px;text-decoration:none;padding:4px 2px}.addr svg{width:22px;height:22px;flex:none;fill:none;stroke:var(--accd);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.addr span{display:grid;line-height:1.35}.addr b{font-weight:700;font-size:1rem}.addr:hover b{color:var(--accd)}
