@@ -30,6 +30,15 @@ var ex=on('ex');
 var msg='Hola! Os escribo desde la web de Fit365.\n\nNombre: '+v('n')+'\nTeléfono: '+v('t')+(v('e')?'\nEdad: '+v('e'):'')+(v('l')?'\nLesiones / necesidades: '+v('l'):'')+
 '\n\nObjetivo: '+on('go')[0]+'\nDías: '+on('dy').join(', ')+'\nHorario: '+on('hh')[0]+'\nModalidad: '+on('md')[0]+'\nNivel: '+on('nv')[0]+(ex.length?'\nMe interesa también: '+ex.join(', '):'')+(v('m')?'\n\n'+v('m'):'');
 window.open('https://wa.me/'+WA+'?text='+encodeURIComponent(msg),'_blank','noopener')})}
+// parrilla
+var sl=$('#slots');if(sl){var tabs=$$('#dtab .tab'),DN={1:'lunes',2:'martes',3:'miércoles',4:'jueves',5:'viernes',6:'sábado'};
+function hh(h){return h+':00'}
+function show(day){tabs.forEach(function(x){x.classList.toggle('on',+x.dataset.d===day)});sl.innerHTML='';var a=day===6?9:6,z=day===6?14:22,ch=Math.floor(t/60);
+for(var h=a;h<z;h++){var st=day===d?(h<ch?'past':h===ch?'now':''):'',el=document.createElement('a');el.className='slot '+st;el.style.animationDelay=(h-a)*25+'ms';el.target='_blank';el.rel='noopener';
+el.href='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola! Quiero reservar plaza en Fit365 el '+DN[day]+' a las '+hh(h)+'.');
+el.innerHTML='<span><b>'+hh(h)+'</b><small>Grupo reducido · máx. 5</small></span><em>'+(st==='now'?'Ahora':st==='past'?'Pasada':'Reservar')+'</em>';sl.appendChild(el)}}
+tabs.forEach(function(x){if(+x.dataset.d===d)x.classList.add('td');x.addEventListener('click',function(){show(+x.dataset.d)})});
+show(d>=1&&d<=6?d:1);var pn=$('#pnow');pn.textContent=open?'Abierto ahora':'Ahora cerrado';pn.style.setProperty('--c',open?'#2a9410':'#e5482a')}
 // lightbox
 var lb=$('.lb');if(lb){var im=$('img',lb);$$('.g').forEach(function(x){x.addEventListener('click',function(){im.src=x.dataset.src;lb.hidden=false})});lb.addEventListener('click',function(){lb.hidden=true});addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true})}
 })();
