@@ -161,3 +161,4 @@ footer{background:#e9ebe6;border-top:1px solid var(--line);padding:36px 0 18px;c
 footer{position:relative;overflow:hidden;isolation:isolate}
 footer:after{content:"FIT365";position:absolute;left:50%;bottom:-.16em;transform:translateX(-50%);font:800 clamp(7rem,24vw,22rem)/1 'Barlow Condensed','Arial Narrow',sans-serif;letter-spacing:-.01em;color:rgba(20,23,20,.06);white-space:nowrap;pointer-events:none;z-index:-1}
 @media(max-width:600px){footer:after{bottom:96px;font-size:27vw}}
+@media(max-width:600px){footer{padding-bottom:24px}footer:after{bottom:20px}}
