@@ -4,7 +4,7 @@ var WA='34652723373',fine=matchMedia('(hover:hover) and (pointer:fine)').matches
 var b=$('.burger'),m=$('.menu');b.addEventListener('click',function(){var o=m.classList.toggle('open');b.setAttribute('aria-expanded',o)});
 var g={};new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Madrid',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).forEach(function(p){g[p.type]=p.value});
 var d={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[g.weekday],t=(+g.hour%24)*60+ +g.minute;
-var open=(d>=1&&d<=5&&t>=360&&t<1320)||(d===6&&t>=540&&t<840);var lv=$('#live');
+var open=(d>=1&&d<=5&&t>=360&&t<1320)||(d===6&&t>=540&&t<810)||(d===0&&t>=480&&t<690);var lv=$('#live');
 if(lv){lv.textContent=open?'Abierto ahora · Vitoria-Gasteiz':'Ahora cerrado · escríbele por WhatsApp';lv.style.setProperty('--c',open?'#3f9a57':'#c0573e')}
 var li=$('#hours li[data-d="'+d+'"]');if(li)li.classList.add('today');
 // palabra rotatoria
