@@ -42,7 +42,7 @@ show(d>=1&&d<=6?d:1);var pn=$('#pnow');pn.textContent=open?'Abierto ahora':'Ahor
 // vídeo
 var vd=$('#vid');if(vd)vd.addEventListener('click',function(){if(vd.querySelector('iframe'))return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+vd.dataset.id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.title='Vídeo de presentación de Fit365';vd.innerHTML='';vd.appendChild(f);vd.style.cursor='default'});
 // vídeo de fondo: cubrir el área y recortar la interfaz de YouTube
-var hb=$('.hbg');if(hb){var fit=function(){var w=hb.clientWidth,h=hb.clientHeight,k=1.18,vw=Math.max(w,h*16/9)*k;hb.style.setProperty('--vw',vw+'px');hb.style.setProperty('--vh',vw*9/16+'px')};fit();addEventListener('resize',fit)}
+var hb=$('.hbg');if(hb){var hf=$('iframe',hb);if(hf&&matchMedia('(min-width:601px)').matches)hf.src=hf.dataset.src;var fit=function(){var w=hb.clientWidth,h=hb.clientHeight,k=1.18,vw=Math.max(w,h*16/9)*k;hb.style.setProperty('--vw',vw+'px');hb.style.setProperty('--vh',vw*9/16+'px')};fit();addEventListener('resize',fit)}
 // lightbox
 var lb=$('.lb');if(lb){var im=$('img',lb);$$('.g').forEach(function(x){x.addEventListener('click',function(){im.src=x.dataset.src;lb.hidden=false})});lb.addEventListener('click',function(){lb.hidden=true});addEventListener('keydown',function(e){if(e.key==='Escape')lb.hidden=true})}
 })();
