@@ -5,7 +5,7 @@ var b=$('.burger'),m=$('.menu');b.addEventListener('click',function(){var o=m.cl
 var g={};new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Madrid',weekday:'short',hour:'numeric',minute:'numeric',hour12:false}).formatToParts(new Date()).forEach(function(p){g[p.type]=p.value});
 var d={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[g.weekday],t=(+g.hour%24)*60+ +g.minute;
 var open=(d>=1&&d<=5&&t>=360&&t<1320)||(d===6&&t>=540&&t<840);var lv=$('#live');
-if(lv){lv.textContent=open?'Abierto ahora · Vitoria-Gasteiz':'Ahora cerrado · escríbele por WhatsApp';lv.style.setProperty('--c',open?'#4e9160':'#c0573e')}
+if(lv){lv.textContent=open?'Abierto ahora · Vitoria-Gasteiz':'Ahora cerrado · escríbele por WhatsApp';lv.style.setProperty('--c',open?'#3f9a57':'#c0573e')}
 var li=$('#hours li[data-d="'+d+'"]');if(li)li.classList.add('today');
 // palabra rotatoria
 var ws=$$('.rot .w'),wi=0;if(ws.length&&!RM)setInterval(function(){var a=ws[wi];a.classList.remove('on');a.classList.add('out');setTimeout(function(){a.classList.remove('out')},500);wi=(wi+1)%ws.length;ws[wi].classList.add('on')},2400);
@@ -38,7 +38,7 @@ for(var h=a;h<z;h++){var st=day===d?(h<ch?'past':h===ch?'now':''):'',el=document
 el.href='https://wa.me/'+WA+'?text='+encodeURIComponent('Hola! Quiero reservar plaza en Fit365 el '+DN[day]+' a las '+hh(h)+'.');
 el.innerHTML='<span><b>'+hh(h)+'</b><small>Grupo reducido · máx. 5</small></span><em>'+(st==='now'?'Ahora':st==='past'?'Pasada':'Reservar')+'</em>';sl.appendChild(el)}}
 tabs.forEach(function(x){if(+x.dataset.d===d)x.classList.add('td');x.addEventListener('click',function(){show(+x.dataset.d)})});
-show(d>=1&&d<=6?d:1);var pn=$('#pnow');pn.textContent=open?'Abierto ahora':'Ahora cerrado';pn.style.setProperty('--c',open?'#4e9160':'#c0573e')}
+show(d>=1&&d<=6?d:1);var pn=$('#pnow');pn.textContent=open?'Abierto ahora':'Ahora cerrado';pn.style.setProperty('--c',open?'#3f9a57':'#c0573e')}
 // vídeo
 var vd=$('#vid');if(vd)vd.addEventListener('click',function(){if(vd.querySelector('iframe'))return;var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+vd.dataset.id+'?autoplay=1&rel=0&modestbranding=1&playsinline=1';f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';f.allowFullscreen=true;f.title='Vídeo de presentación de Fit365';vd.innerHTML='';vd.appendChild(f);vd.style.cursor='default'});
 // lightbox
