@@ -231,3 +231,4 @@ blockquote{background:#fffdf9}blockquote:before{color:#e0a487}
 .lb img{max-width:min(1100px,92vw);max-height:80vh;cursor:pointer}
 @media(max-width:600px){.lbn{width:42px;height:42px;top:auto;bottom:56px;transform:none}}
 @media(max-width:600px){.g span{font-size:.72rem;padding:4px 10px;left:8px;bottom:8px;right:8px;width:max-content;max-width:calc(100% - 16px)}}
+.trust{grid-template-columns:repeat(3,1fr)}@media(max-width:600px){.trust{grid-template-columns:repeat(3,1fr)}}
